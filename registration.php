@@ -15,7 +15,6 @@ include "credentials.php";
 session_start();
 
 if(isset($_POST["register"])) {
-  
     // Get username & password
     $uname = $_POST["username"];
     $passwd = $_POST["password"];
@@ -23,18 +22,19 @@ if(isset($_POST["register"])) {
     $conn = database_connection($dsn, $user, $password);
     $result = check_user_exists($conn, $uname);
 
-    if ($result == true) {
+    if ($result == false) {
         insert_new_user($conn, $uname, $passwd);
 
         header("location: home.php");
         exit();
     } else {
-        echo "Username/Password already exist!";
+        echo "<h1>Username/Password already exist!</h1>";
 
-        header("location: registration.php");
         exit();
+
     }
 } else {
+
     ?>
 
 <form method="Post" action="">
@@ -50,7 +50,6 @@ if(isset($_POST["register"])) {
 </form>
 
 <?php } ?>
-
 
 </div>
 </body>

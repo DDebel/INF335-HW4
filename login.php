@@ -20,7 +20,6 @@ if(isset($_POST["login"])) {
     $uname = $_POST["username"];
     $passwd = $_POST["password"];
 
-    echo $uname;
     $conn = database_connection($dsn, $user, $password);
     $result = check_user_registered($conn, $uname, $passwd);
 
@@ -30,9 +29,8 @@ if(isset($_POST["login"])) {
         header("Location: home.php");
         exit();
     } else {
-        echo "Username/Password do not match!";
-
-        header("Location: registration.php");
+        echo "<h1>No user exists with that Username/Password</h1>";
+        
         exit();
     }
 } else {

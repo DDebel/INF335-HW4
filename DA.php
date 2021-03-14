@@ -13,9 +13,9 @@
         $CheckUserExist->execute(['username']); // run the username row 
 
         if ($CheckUserExist->rowCount() > 0) { // if any row is found
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
